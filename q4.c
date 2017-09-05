@@ -26,12 +26,12 @@ int main()
    unsigned long min;
   #if TEST 
 
- //unsigned long p[]={5,1,2,8,7};
- unsigned long p[]={1,1,1,8,7};
+ unsigned long p[]={5,1,2,8,7};
+ //unsigned long p[]={1,1,1,8,7};
   N=sizeof(p)/sizeof(p[0]);
   show_array(p,N);
   sort(p,N);
-  show_array(p,N);
+ // show_array(p,N);
 	#else 
 	int p[50000]={0}; 
    //get_input
@@ -46,7 +46,7 @@ int main()
  
   }
     
-   show_array(diff,N);
+  //show_array(diff,N);
    
   //create sorting index to diff 
   for (i=0;i<N;i++)  k[i]=i;
@@ -56,7 +56,7 @@ int main()
   show_array(k,N);
   //----------------------
   //show all k groups
-  sort(k,K); //divide group from left to right
+  sort(k,K-1); //divide group from left to right
   int l=0,r=0; 
   for(i=0;i<K-1;i++) {
     l=r; r=k[i]; 
@@ -65,7 +65,7 @@ int main()
   } 
    show_array2(p,r,N);
    diameter[i]=p[N-1]-p[r];
-   // show_array(diameter,K);
+   //show_array(diameter,K);
  //---------------------------
  
   min=find_max(diameter,K);
@@ -107,7 +107,7 @@ void sort_2( int a[], int n )
      flag=0;
     for(j=1;j<(n-i);j++) {
       /* If adjacent items out of order, swap */
-      if( g_ptr[a[j-1]]<=g_ptr[a[j]] ) {
+      if( g_ptr[a[j-1]]<g_ptr[a[j]] ) {
            SWAP(a[j-1],a[j]);
             flag=1;
           }
